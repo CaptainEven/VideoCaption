@@ -28,9 +28,10 @@ python videoCaption.py video_file
   本模块将深度卷积神经网络和深度循环神经网络结合，用于解决图像标注和语句检索问题。通过CNN提取输入图像的高层语义信息，然后输入到LSTM不断预测下一个最可能出现的词语，组成图像描述。训练的目标就是输出的词语与预期的词语相符合，依次设计神经网络的loss函数。本程序提供训练好的模型，链接见上。读者想要用自己的数据及训练也是可以的。</br>
 (3). 文本摘要模块(Text summary)：
   文本摘要模块使用的是textRank算法：类似于PageRank,不同之处在于将每一个句子看作网络中的节点。</br>
-  在进行textRank之前，将句子处理成一个由词语(word)组成的list。计算节点与节点之间的链接个数有两种算法：
-  <1>. 通过词语之间的相邻关系确定Edge连接(textrank4zh的做法)。
-  <2>. 通过word2vect计算句子与句子之间的相似性：如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。
+  在进行textRank之前，将句子处理成一个由词语(word)组成的list。计算节点与节点之间的链接个数有两种算法：</br>
+  <1>. 通过词语之间的相邻关系确定Edge连接(textrank4zh的做法)。</br>
+  <2>. 通过word2vect计算句子与句子之间的相似性：</br>
+  如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。</br>
   文本摘要模块的预处理比较麻烦，步骤比较多。本程序训练Word2vect模型用的是中文维基百科语料库，读者可自行下载https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
   然后，安装Wikipedia Extractor，使用Wikipedia Extractor抽取正文内容。Wikipedia Extractor是意大利人用Python写的一个维基百科抽取器，使用非常方便。下载之后直接使用这条命令即可完成抽取，运行时间很快。执行以下命令。
   </br>
