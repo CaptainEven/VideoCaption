@@ -8,7 +8,7 @@
 (3). Text summary模块 </br>
 
 依赖包:
-python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc
+python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc, gensim
 </br>
 预训练的模型文件：
 Image caption模块的模型文件和Text summary模型文件，链接：
@@ -37,12 +37,14 @@ python videoCaption.py video_file
   Windows使用powershell也是一样的命令(注意除去sudo)，命令运行结束会在目录extracted的下一级目录下得到两个文件wiki_00, wiki_01。</br>
  接下里对这两个文件做预处理:
    (1). 繁体转简体: </br>
-    使用opencc(windows下安装比较麻烦，最有效的方式直接下载opencc-python绑定包源码，直接通过源码的setup.py安装是最有效的，使用过程中可能会遇到版本问题，注释掉相应的代码即可，不影响使用，亲测)，然后通过preprocess目录下的脚本做预处理。 </br>
+    使用opencc(windows下安装比较麻烦，最有效的方式直接下载opencc-python绑定包源码，直接通过源码的setup.py安装是最有效的，使用过程中可能会遇到版本问题，注释掉相应的代码即可，不影响使用，亲测)。 </br>
     linux下直接运行脚本进行opencc的安装和繁转简处理：</br>
      $ sudo apt-get install opencc </br>
      $ opencc -i wiki_00 -o zh_wiki_00 -c zht2zhs.ini </br>
       $ opencc -i wiki_01 -o zh_wiki_01 -c zht2zhs.ini </br>
-  (2). 去除多余的符号，同样使用preprocess下的脚本即可。
+  (2). 去除多余的符号，使用preprocess下的filter_wiki.py脚本即可。</br>
+  (3). 使用preprocess下的cut2words.py处理，主要是通过jieba做分词处理。</br>
+  (4). 安装gensim，通过train_word2vect.py训练word2vect模型，训练结束得到3个文件。</br>
      
   
 
