@@ -12,8 +12,8 @@ Video summary with text, input a video output a txt decribing the video
 python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc, gensim
 </br>
 预训练的模型文件：
-Image caption模块的模型文件和Text summary模型文件，链接：
-</br>
+Image caption模块的模型文件和Text summary模型文件，链接：</br>
+
 使用方法：</br>
 python videoCaption.py video_file </br>
 </br>   
