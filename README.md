@@ -1,4 +1,3 @@
-
 # VideoCaption
 视频的文本摘要(标注)，输入一段视频，通过深度学习网络和人工智能程序识别视频主要表达的意思
 Video summary with text, input a video output a txt decribing the video.
@@ -15,7 +14,8 @@ python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc, gensim
 </br>
 预训练的模型文件：
 Image caption模块的模型文件和Text summary模型文件，链接：</br>
-
+[模型文件链接](https://pan.baidu.com/s/1thMC-pQ31xgl68ceDuIERg)
+</br>
 使用方法：</br>
 -
 python videoCaption.py video_file </br>
