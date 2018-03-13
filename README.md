@@ -15,9 +15,10 @@ python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc, gensim
 预训练的模型文件：
 Image caption模块的模型文件和Text summary模型文件，链接：
 </br>
-使用方法：
-python videoCaption.py video_file
-</br>
+使用方法：</br>
+python videoCaption.py video_file </br>
+</br>   
+
 脚本运行效果截图：(测试的视频是薛之谦的《演员》mv)
 ![](https://github.com/CaptainEven/VideoCaption/blob/master/screen%20shots/result.png)
 </br>
