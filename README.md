@@ -26,23 +26,22 @@ python videoCaption.py video_file </br>
 </br>
 算法主要步骤和脚本文件详解：</br>
 -
-ShortDetector文件:
-#
+# (1).ShortDetector文件:
   通过opencv读入视频流，使用3帧间差法计算相邻2帧的直方图帧间一阶差分和二阶差分算子,然后根据阈值判断是否切换镜头，保存镜头所在的帧ID即可。
   视频文件较大也可以，程序会将视频文件通过流的方式逐步读入内存。</br>
 </br>
-(2). Imge Caption模块:
+# (2). Imge Caption模块:
   本模块将深度卷积神经网络和深度循环神经网络结合，用于解决图像标注和语句检索问题。通过CNN提取输入图像的高层语义信息，然后输入到LSTM不断预测下一个最可能出现的词语，组成图像描述。训练的目标就是输出的词语与预期的词语相符合，依次设计神经网络的loss函数。本程序提供训练好的模型，链接见上。读者想要用自己的数据及训练也是可以的。</br>
   通过调用img2txt.py的generate_txt()函数，输入预处理后的图像数据，输出图像描述信息。</br>
   需要注意的是：</br>
-  <1>. 这里使用ResNet作为图像高层次语义特征提取模型，不能直接使用ResNet模型，需要做出一点修改：</br>
+  ## <1>. 这里使用ResNet作为图像高层次语义特征提取模型，不能直接使用ResNet模型，需要做出一点修改：</br>
       模型要去掉网络的最后一层全连接层FC，或者将FC替换为恒等映射。因为FC主要作用是从特征空间映射到样本空间，起到特征融合的作用，为分类做准备。我们这里不需要得到分类概率，只需要特征信息即可。
 </br></br>
-(3). 文本摘要模块(Text summary)：
+# (3). 文本摘要模块(Text summary)：
   文本摘要模块使用的是textRank算法：类似于PageRank,不同之处在于将每一个句子看作网络中的节点。</br>
   在进行textRank之前，将句子处理成一个由词语(word)组成的list。计算节点与节点之间的链接个数有两种算法：</br>
-  <1>. 通过词语之间的相邻关系确定Edge连接，即N-gram的算法(即textrank4zh的做法)。</br>
-  <2>. 通过word2vect计算句子与句子之间的相似性：</br>
+  ## <1>. 通过词语之间的相邻关系确定Edge连接，即N-gram的算法(即textrank4zh的做法)。</br>
+  ## <2>. 通过word2vect计算句子与句子之间的相似性：</br>
   如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。</br>
 </br>
 关于文本摘要的预处理：</br>
@@ -57,15 +56,15 @@ ShortDetector文件:
   $ ./WikiExtractor.py -b 1024M -o extracted zhwiki-latest-pages-articles.xml.bz2 </br>
   Windows使用powershell也是一样的命令(注意除去sudo)，命令运行结束会在目录extracted的下一级目录下得到两个文件wiki_00, wiki_01。</br>
  接下里对这两个文件做预处理: </br>
-   (1). 繁体转简体: </br>
+   # (1). 繁体转简体: </br>
     使用opencc(windows下安装比较麻烦，最有效的方式直接下载opencc-python绑定包源码，直接通过源码的setup.py安装是最有效的，使用过程中可能会遇到版本问题，注释掉相应的代码即可，不影响使用，亲测)。 </br>
     linux下直接运行脚本进行opencc的安装和繁转简处理：</br>
      $ sudo apt-get install opencc </br>
      $ opencc -i wiki_00 -o zh_wiki_00 -c zht2zhs.ini </br>
-      $ opencc -i wiki_01 -o zh_wiki_01 -c zht2zhs.ini </br>
-  <2>. 去除多余的符号，清洗文本，使用preprocess下的filter_wiki.py脚本。</br>
-  <3>. 使用preprocess下的cut2words.py处理，主要是通过jieba做分词处理。</br>
- <4>. 安装gensim，通过train_word2vect.py训练word2vect模型，训练结束得到3个模型文件。利用gensim可以计算中文词语的词向量 </br>
+     $ opencc -i wiki_01 -o zh_wiki_01 -c zht2zhs.ini </br>
+  ## <2>. 去除多余的符号，清洗文本，使用preprocess下的filter_wiki.py脚本。</br>
+  ## <3>. 使用preprocess下的cut2words.py处理，主要是通过jieba做分词处理。</br>
+ ## <4>. 安装gensim，通过train_word2vect.py训练word2vect模型，训练结束得到3个模型文件。利用gensim可以计算中文词语的词向量 </br>
  可以通过提供的Word2VectTextRank.py脚本和test_0.txt, test_1.txt..测试文件测试文本摘要效果。
  ![](https://github.com/CaptainEven/VideoCaption/blob/master/screen%20shots/text_sum.png)
      
