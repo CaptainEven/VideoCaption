@@ -1,5 +1,3 @@
-pre
-
 # VideoCaption
 视频的文本摘要(标注)，输入一段视频，通过深度学习网络和人工智能程序识别视频主要表达的意思(Input a video output a txt decribing the video)。
 </br>
@@ -44,8 +42,8 @@ python videoCaption.py video_file
      $ sudo apt-get install opencc </br>
      $ opencc -i wiki_00 -o zh_wiki_00 -c zht2zhs.ini </br>
      $ opencc -i wiki_01 -o zh_wiki_01 -c zht2zhs.ini </br>
-   (2).
-     
+  (2). 去除多余的符号，同样使用preprocess下的脚本即可。
+     
   
 
 
