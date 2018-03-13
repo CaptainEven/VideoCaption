@@ -41,7 +41,7 @@ python videoCaption.py video_file
     linux下直接运行脚本进行opencc的安装和繁转简处理：</br>
      $ sudo apt-get install opencc </br>
      $ opencc -i wiki_00 -o zh_wiki_00 -c zht2zhs.ini </br>
-     $ opencc -i wiki_01 -o zh_wiki_01 -c zht2zhs.ini </br>
+      $ opencc -i wiki_01 -o zh_wiki_01 -c zht2zhs.ini </br>
   (2). 去除多余的符号，同样使用preprocess下的脚本即可。
      
   
