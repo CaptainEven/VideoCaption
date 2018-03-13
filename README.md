@@ -43,7 +43,7 @@ python videoCaption.py video_file </br>
   在进行textRank之前，将句子处理成一个由词语(word)组成的list。计算节点与节点之间的链接个数有两种算法：</br>
   ## <1>. 通过词语之间的相邻关系确定Edge连接，即N-gram的算法(即textrank4zh的做法)。</br>
   ## <2>. 词向量不仅考虑了上下文信息，而且减少了冗余信息，因此可以很自然可以想到利用word2vect计算句子与句子之间的相似性：</br>
-词向量均值法：  </b> 
+词向量均值法：</b> 
   例如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。</br>
 </br>
 关于文本摘要的预处理：</br>
