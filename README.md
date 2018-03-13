@@ -17,7 +17,7 @@ Image caption模块的模型文件和Text summary模型文件，链接：
 python videoCaption.py video_file
 
 脚本运行效果截图：
-
+![](https://github.com/CaptainEven/VideoCaption/blob/master/screen%20shots/result.png)
 
 算法主要脚本文件详解
 (1). ShortDetector文件:
