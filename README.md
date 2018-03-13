@@ -19,9 +19,10 @@ python videoCaption.py video_file
 脚本运行效果截图：
 ![](https://github.com/CaptainEven/VideoCaption/blob/master/screen%20shots/result.png)
 
-算法主要脚本文件详解
+算法主要步骤和脚本文件详解：
 (1). ShortDetector文件:
   通过opencv读入视频流，使用3帧间差法计算相邻2帧的直方图帧间一阶差分和二阶差分算子,然后根据阈值判断是否切换镜头，保存镜头所在的帧ID即可。
   视频文件较大也可以，程序会将视频文件通过流的方式逐步读入内存。
-(2).
+(2). Imge Caption模块:
+ 
 
