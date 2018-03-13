@@ -107,6 +107,15 @@ def video2txt(video_path, save_key_frame=False):
     #     return
 
 
+# if __name__ == '__main__':
+#     video2txt('./actor.mp4', True)
+#     print('--Test done.')
+
 if __name__ == '__main__':
-    video2txt('./actor.mp4', True)
-    print('--Test done.')
+    if len(sys.argv) != 2:
+        print("Usage: python videoCaption.py input_file")
+        sys.exit()
+    in_file = sys.argv[1]
+    print('in_file: ', in_file)
+    video2txt(in_file)
+    print('--Video caption done.')
