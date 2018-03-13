@@ -10,8 +10,11 @@
 依赖包:
 python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm
 
-与训练的模型文件：
-(1). Image caption模块的模型文件
+预训练的模型文件：
+Image caption模块的模型文件和Text summary模型文件，链接：
+
+使用方法：
+python videoCaption input_file
 
 
 
