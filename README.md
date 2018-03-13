@@ -15,7 +15,7 @@ python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc, gensim
 预训练的模型文件：
 Image caption模块的模型文件和Text summary模型文件，链接：</br>
 [模型文件链接](https://pan.baidu.com/s/1thMC-pQ31xgl68ceDuIERg)
-</br>
+</br></br>
 使用方法：</br>
 -
 python videoCaption.py video_file </br>
