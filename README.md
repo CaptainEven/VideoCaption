@@ -32,13 +32,15 @@ python videoCaption.py video_file </br>
   需要注意的是：</br>
   <1>. 这里使用ResNet作为图像高层次语义特征提取模型，不能直接使用ResNet模型，需要做出一点修改：</br>
       模型要去掉网络的最后一层全连接层FC，或者将FC替换为恒等映射。因为FC主要作用是从特征空间映射到样本空间，起到特征融合的作用，为分类做准备。我们这里不需要得到分类概率，只需要特征信息即可。
-</br>
+</br></br>
 (3). 文本摘要模块(Text summary)：
   文本摘要模块使用的是textRank算法：类似于PageRank,不同之处在于将每一个句子看作网络中的节点。</br>
   在进行textRank之前，将句子处理成一个由词语(word)组成的list。计算节点与节点之间的链接个数有两种算法：</br>
   <1>. 通过词语之间的相邻关系确定Edge连接，即N-gram的算法(即textrank4zh的做法)。</br>
   <2>. 通过word2vect计算句子与句子之间的相似性：</br>
   如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。</br>
+</br>
+关于文本摘要的预处理：</br>
   文本摘要模块的预处理比较麻烦，步骤比较多。本程序训练Word2vect模型用的是中文维基百科语料库，读者可自行下载https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
   然后，安装Wikipedia Extractor，使用Wikipedia Extractor抽取正文内容。Wikipedia Extractor是意大利人用Python写的一个维基百科抽取器，使用非常方便。下载之后直接使用这条命令即可完成抽取，运行时间很快。执行以下命令。
   </br>
@@ -49,7 +51,7 @@ python videoCaption.py video_file </br>
   $ ./WikiExtractor.py -b 1024M -o extracted zhwiki-latest-pages-articles.xml.bz2 </br>
   Windows使用powershell也是一样的命令(注意除去sudo)，命令运行结束会在目录extracted的下一级目录下得到两个文件wiki_00, wiki_01。</br>
  接下里对这两个文件做预处理: </br>
-   <1>. 繁体转简体: </br>
+   (1). 繁体转简体: </br>
     使用opencc(windows下安装比较麻烦，最有效的方式直接下载opencc-python绑定包源码，直接通过源码的setup.py安装是最有效的，使用过程中可能会遇到版本问题，注释掉相应的代码即可，不影响使用，亲测)。 </br>
     linux下直接运行脚本进行opencc的安装和繁转简处理：</br>
      $ sudo apt-get install opencc </br>
