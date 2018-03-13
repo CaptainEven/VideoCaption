@@ -1,3 +1,4 @@
+
 # VideoCaption
 视频的文本摘要(标注)，输入一段视频，通过深度学习网络和人工智能程序识别视频主要表达的意思(Input a video output a txt decribing the video)。
 </br>
@@ -25,7 +26,11 @@ python videoCaption.py video_file
   视频文件较大也可以，程序会将视频文件通过流的方式逐步读入内存。</br>
 (2). Imge Caption模块:
   本模块将深度卷积神经网络和深度循环神经网络结合，用于解决图像标注和语句检索问题。通过CNN提取输入图像的高层语义信息，然后输入到LSTM不断预测下一个最可能出现的词语，组成图像描述。训练的目标就是输出的词语与预期的词语相符合，依次设计神经网络的loss函数。本程序提供训练好的模型，链接见上。读者想要用自己的数据及训练也是可以的。</br>
-(3). 文本摘要模块(Text summary)：   
+(3). 文本摘要模块(Text summary)：
+  文本摘要模块使用的是textRank算法：类似于PageRank,不同之处在于将每一个句子看作网络中的节点。</br>
+  在进行textRank之前，将句子处理成一个由词语(word)组成的list。计算节点与节点之间的链接个数有两种算法：
+  <1>. 通过词语之间的相邻关系确定Edge连接(textrank4zh的做法)。
+  <2>. 通过word2vect计算句子与句子之间的相似性：如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。
   文本摘要模块的预处理比较麻烦，步骤比较多。本程序训练Word2vect模型用的是中文维基百科语料库，读者可自行下载https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
   然后，安装Wikipedia Extractor，使用Wikipedia Extractor抽取正文内容。Wikipedia Extractor是意大利人用Python写的一个维基百科抽取器，使用非常方便。下载之后直接使用这条命令即可完成抽取，运行时间很快。执行以下命令。
   </br>
@@ -36,15 +41,15 @@ python videoCaption.py video_file
   $ ./WikiExtractor.py -b 1024M -o extracted zhwiki-latest-pages-articles.xml.bz2 </br>
   Windows使用powershell也是一样的命令(注意除去sudo)，命令运行结束会在目录extracted的下一级目录下得到两个文件wiki_00, wiki_01。</br>
  接下里对这两个文件做预处理:
-   (1). 繁体转简体: </br>
+   <1>. 繁体转简体: </br>
     使用opencc(windows下安装比较麻烦，最有效的方式直接下载opencc-python绑定包源码，直接通过源码的setup.py安装是最有效的，使用过程中可能会遇到版本问题，注释掉相应的代码即可，不影响使用，亲测)。 </br>
     linux下直接运行脚本进行opencc的安装和繁转简处理：</br>
      $ sudo apt-get install opencc </br>
      $ opencc -i wiki_00 -o zh_wiki_00 -c zht2zhs.ini </br>
       $ opencc -i wiki_01 -o zh_wiki_01 -c zht2zhs.ini </br>
-  (2). 去除多余的符号，使用preprocess下的filter_wiki.py脚本即可。</br>
-  (3). 使用preprocess下的cut2words.py处理，主要是通过jieba做分词处理。</br>
- (4). 安装gensim，通过train_word2vect.py训练word2vect模型，训练结束得到3个模型文件。利用gensim可以计算中文词语的词向量 </br>
+  <2>. 去除多余的符号，使用preprocess下的filter_wiki.py脚本即可。</br>
+  <3>. 使用preprocess下的cut2words.py处理，主要是通过jieba做分词处理。</br>
+ <4>. 安装gensim，通过train_word2vect.py训练word2vect模型，训练结束得到3个模型文件。利用gensim可以计算中文词语的词向量 </br>
  
      
   
