@@ -14,7 +14,10 @@ python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm
 Image caption模块的模型文件和Text summary模型文件，链接：
 
 使用方法：
-python videoCaption input_file
+python videoCaption.py video_file
 
-
+#-------------------------------------算法主要脚本文件详解
+(1). ShortDetector文件:
+  通过opencv读入视频流，使用3帧间差法计算相邻2帧的直方图帧间一阶差分和二阶差分算子
+  
 
