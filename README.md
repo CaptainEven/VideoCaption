@@ -1,4 +1,5 @@
 
+
 # VideoCaption
 视频的文本摘要(标注)，输入一段视频，通过深度学习网络和人工智能程序识别视频主要表达的意思(Input a video output a txt decribing the video)。
 </br>
@@ -51,7 +52,8 @@ python videoCaption.py video_file
   <2>. 去除多余的符号，使用preprocess下的filter_wiki.py脚本即可。</br>
   <3>. 使用preprocess下的cut2words.py处理，主要是通过jieba做分词处理。</br>
  <4>. 安装gensim，通过train_word2vect.py训练word2vect模型，训练结束得到3个模型文件。利用gensim可以计算中文词语的词向量 </br>
- 
+ 可以通过提供的Word2VectTextRank.py脚本和test_0.txt, test_1.txt..测试文件测试文本摘要效果。
+ ![](https://github.com/CaptainEven/VideoCaption/blob/master/screen%20shots/result.png)
      
   
 
