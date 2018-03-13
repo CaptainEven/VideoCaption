@@ -44,7 +44,8 @@ python videoCaption.py video_file
       $ opencc -i wiki_01 -o zh_wiki_01 -c zht2zhs.ini </br>
   (2). 去除多余的符号，使用preprocess下的filter_wiki.py脚本即可。</br>
   (3). 使用preprocess下的cut2words.py处理，主要是通过jieba做分词处理。</br>
-  (4). 安装gensim，通过train_word2vect.py训练word2vect模型，训练结束得到3个文件。</br>
+ (4). 安装gensim，通过train_word2vect.py训练word2vect模型，训练结束得到3个模型文件。利用gensim可以计算中文词语的词向量 </br>
+ 
      
   
 
