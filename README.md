@@ -10,7 +10,7 @@
 (3). Text summary模块 </br>
 
 依赖包:
-python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm
+python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc
 </br>
 预训练的模型文件：
 Image caption模块的模型文件和Text summary模型文件，链接：
@@ -36,8 +36,12 @@ python videoCaption.py video_file
   $ cd wikiextractor </br>
   $ sudo python setup.py install </br>
   $ ./WikiExtractor.py -b 1024M -o extracted zhwiki-latest-pages-articles.xml.bz2 </br>
-  Windows使用powershell也是一样的命令(除去sudo) </br>
-  
+  Windows使用powershell也是一样的命令(注意除去sudo) </br>
+  命令运行结束会在目录extracted的下一级目录下得到两个文件wiki_00, wiki_01，
+  接下里对这两个文件做预处理:
+   (1). 繁体转简体: </br>
+    使用opencc(windows下安装比较麻烦，最有效的方式直接下载opencc-python绑定包源码，直接通过源码的setup.py安装是最有效的，使用过程中可能会遇到版本问题，注释掉相应的代码即可，不影响使用，亲测)，然后通过本人提供的脚本做预处理。 </br>
+    linux下直接运行运行
   
 
 
