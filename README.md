@@ -1,4 +1,5 @@
-  
+
+
 # VideoCaption
 视频的文本摘要(标注)，输入一段视频，通过深度学习网络和人工智能程序识别视频主要表达的意思(Input a video output a txt decribing the video)。
 </br>
@@ -29,12 +30,13 @@ python videoCaption.py video_file
 (3). 文本摘要模块(Text summary)：   
   文本摘要模块的预处理比较麻烦，步骤比较多。本程序训练Word2vect模型用的是中文维基百科语料库，读者可自行下载https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
   然后，安装Wikipedia Extractor，使用Wikipedia Extractor抽取正文内容。Wikipedia Extractor是意大利人用Python写的一个维基百科抽取器，使用非常方便。下载之后直接使用这条命令即可完成抽取，运行时间很快。执行以下命令。
-  $ sudo apt-get install unzip python python-dev python-pip
-  $ git clone https://github.com/attardi/wikiextractor.git wikiextractor
-  $ cd wikiextractor
-  $ sudo python setup.py install
-  $ ./WikiExtractor.py -b 1024M -o extracted zhwiki-latest-pages-articles.xml.bz2
-  Windows使用powershell也是一样的命令(除去sudo哈..)
+  </br>
+  $ sudo apt-get install unzip python python-dev python-pip </br>
+  $ git clone https://github.com/attardi/wikiextractor.git wikiextractor </br>
+  $ cd wikiextractor </br>
+  $ sudo python setup.py install </br>
+  $ ./WikiExtractor.py -b 1024M -o extracted zhwiki-latest-pages-articles.xml.bz2 </br>
+  Windows使用powershell也是一样的命令(除去sudo) </br>
   
   
 
