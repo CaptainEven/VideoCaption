@@ -44,7 +44,7 @@ python videoCaption.py video_file </br>
   $ sudo python setup.py install </br>
   $ ./WikiExtractor.py -b 1024M -o extracted zhwiki-latest-pages-articles.xml.bz2 </br>
   Windows使用powershell也是一样的命令(注意除去sudo)，命令运行结束会在目录extracted的下一级目录下得到两个文件wiki_00, wiki_01。</br>
- 接下里对这两个文件做预处理:
+ 接下里对这两个文件做预处理: </br>
    <1>. 繁体转简体: </br>
     使用opencc(windows下安装比较麻烦，最有效的方式直接下载opencc-python绑定包源码，直接通过源码的setup.py安装是最有效的，使用过程中可能会遇到版本问题，注释掉相应的代码即可，不影响使用，亲测)。 </br>
     linux下直接运行脚本进行opencc的安装和繁转简处理：</br>
