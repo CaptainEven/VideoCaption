@@ -46,7 +46,7 @@ python videoCaption.py video_file </br>
   ### <2>. 词向量是多维实数向量，向量中包含了自然语言中的语义和语法关系信息。不仅考虑了上下文信息，而且减少了冗余信息，因此可以很自然可以想到利用word2vect计算句子与句子之间的相似性：</br>
 词向量均值法：</b> 
   例如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。</br>
-</br> </br>
+</br>
 ### <3>. 文本摘要还可以其他深度学习的方式，比如通过训练一个seq2seq模型来完成，这部分内容还在测试，后续会补上。</br>
 关于文本摘要的预处理：</br>
 -
