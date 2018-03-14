@@ -47,7 +47,7 @@ python videoCaption.py video_file </br>
 词向量均值法：</b> 
   例如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。</br>
 ### <3>. 文本摘要还可以其他深度学习的方式，比如通过训练一个seq2seq模型来完成，这部分内容还在测试，后续会补上。</br>
-关于文本摘要的预处理：</br>
+关于文本摘要使用的维基百科中文预料处理：</br>
 -
   文本摘要模块的预处理比较麻烦，步骤比较多。本程序训练Word2vect模型用的是中文维基百科语料库，读者可自行下载https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
   然后，安装Wikipedia Extractor，使用Wikipedia Extractor抽取正文内容。Wikipedia Extractor是意大利人用Python写的一个维基百科抽取器，使用非常方便。下载之后直接使用这条命令即可完成抽取，运行时间很快。执行以下命令。
