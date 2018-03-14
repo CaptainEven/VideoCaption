@@ -1,4 +1,4 @@
- # VideoCaption
+# VideoCaption
 视频的文本摘要(标注)，输入一段视频，通过深度学习网络和人工智能程序识别视频主要表达的意思
 Video summary with text, input a video output a txt decribing the video.
 </br>
@@ -10,7 +10,7 @@ Video summary with text, input a video output a txt decribing the video.
 
 依赖包:
 -
-python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc, gensim
+python3, numpy, opencv, pytorch, jieba分词, textrank4zh, tdqm, opencc, gensim </br>
 </br>
 预训练的模型文件：
 Image caption模块的模型文件和Text summary模型文件，链接：</br>
@@ -47,6 +47,7 @@ python videoCaption.py video_file </br>
 词向量均值法：</b> 
   例如计算句子A=['word','you','me']，与句子B=['sentence','google','python']计算相似性，从word2vec模型中分别得到A中三个单词的词向量v1,v2,v3取其平均值Va(avg)=(v1+v2+v3)/3。对句子B做同样的处理得到Vb(avg)，然后计算Va(avg)与Vb(avg)连个向量的夹角余弦值，Cosine Similarity视为句子A与B的相似度值。</br>
 </br> </br>
+### <3>. 文本摘要还可以其他深度学习的方式，比如通过训练一个seq2seq模型来完成，这部分内容还在测试，后续会补上。</br>
 关于文本摘要的预处理：</br>
 -
   文本摘要模块的预处理比较麻烦，步骤比较多。本程序训练Word2vect模型用的是中文维基百科语料库，读者可自行下载https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
